@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WDLAB-AlphaForge · 안전한 AI 자동매매 플랫폼</title>
+<meta name="description" content="WDLAB-AlphaForge는 멀티 에이전트 하네스 엔지니어링(AHE)·6단계 RiskGuard·Ed25519 결정 토큰·5단계 게이팅으로 LLM의 환각으로부터 자본을 보호하는 화이트박스 자동매매 시스템입니다." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <button class="menu-toggle neu-raised" id="menuToggle" aria-label="Menu">☰</button>
+
+  <!-- ============== SIDEBAR ============== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-logo neu-pressed">
+        <span class="led led-cy"></span>
+        <span class="led led-pk"></span>
+      </div>
+      <div class="brand-text">
+        <div class="brand-title">WDLAB</div>
+        <div class="brand-subtitle">AlphaForge v2.0 · 2026.05</div>
+      </div>
+    </div>
+
+    <nav class="nav-sections">
+      <div class="nav-group">
+        <div class="nav-label">시작</div>
+        <a class="nav-item active" href="#hero" data-target="hero"><i class="dot"></i><span>홈 · 개요</span></a>
+        <a class="nav-item" href="#identity" data-target="identity"><i class="dot"></i><span>왜 AlphaForge 인가</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">철학 · Philosophy</div>
+        <a class="nav-item" href="#principles" data-target="principles"><i class="dot dot-cy"></i><span>6대 설계 원칙</span></a>
+        <a class="nav-item" href="#whitebox" data-target="whitebox"><i class="dot dot-cy"></i><span>화이트박스의 약속</span></a>
+        <a class="nav-item" href="#ahe" data-target="ahe"><i class="dot dot-cy"></i><span>AHE 5개 메타 레이어</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">에이전트 · Architecture</div>
+        <a class="nav-item" href="#agents" data-target="agents"><i class="dot dot-cy"></i><span>11명의 에이전트</span></a>
+        <a class="nav-item" href="#strategies" data-target="strategies"><i class="dot dot-cy"></i><span>활용 전략 4종</span></a>
+        <a class="nav-item" href="#ontology" data-target="ontology"><i class="dot dot-cy"></i><span>KFinOnto 온톨로지</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">안전 장치 · Safety</div>
+        <a class="nav-item" href="#riskguard" data-target="riskguard"><i class="dot dot-pk"></i><span>RiskGuard 6단계</span></a>
+        <a class="nav-item" href="#token" data-target="token"><i class="dot dot-pk"></i><span>Decision Token</span></a>
+        <a class="nav-item" href="#gates" data-target="gates"><i class="dot dot-pk"></i><span>5단계 운용 게이트</span></a>
+        <a class="nav-item" href="#emergency" data-target="emergency"><i class="dot dot-pk"></i><span>비상 운용 · 자동 회복</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">시스템 · Tech</div>
+        <a class="nav-item" href="#architecture" data-target="architecture"><i class="dot dot-am"></i><span>기술 스택 · 인프라</span></a>
+        <a class="nav-item" href="#kis" data-target="kis"><i class="dot dot-am"></i><span>KIS API 연동</span></a>
+        <a class="nav-item" href="#status" data-target="status"><i class="dot dot-am"></i><span>구현 현황</span></a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">패러다임 · Future</div>
+        <a class="nav-item" href="#compare" data-target="compare"><i class="dot"></i><span>Black-box vs AlphaForge</span></a>
+        <a class="nav-item" href="#rules" data-target="rules"><i class="dot"></i><span>운용 3대 수칙</span></a>
+        <a class="nav-item" href="#future" data-target="future"><i class="dot"></i><span>최종 목표 · 비전</span></a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer neu-pressed">
+      <div class="status-led"><span class="pulse"></span> Single-Host · Self-Hosted · Fail-Closed</div>
+    </div>
+  </aside>
+
+  <!-- ============== MAIN ============== -->
+  <main class="content">
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="section section-hero">
+      <div class="hero-meta">
+        <span class="chip neu-pressed">v2.0 Integrated Edition · 2026.05.03</span>
+        <span class="chip neu-pressed">67 Phases · 110+ Functions</span>
+        <span class="chip neu-pressed">577 PASS / 0 FAIL</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="text-grad-cy">WDLAB</span><span class="text-grad-pk">-AlphaForge</span>
+      </h1>
+      <p class="hero-tagline">
+        설계자의 투자 철학을 24시간 365일 오차 없이 실행하는 <b>외부 신경계</b>.<br/>
+        멀티 에이전트의 환각으로부터 자본을 지키는 <b>화이트박스 AI 자동매매 플랫폼</b>.
+      </p>
+      <p class="hero-quote">
+        "인간의 지혜를 기계의 정확성으로 24시간 무결하게 실행하되,<br/>
+        기계가 인간을 대체하지 않게 하는 것."
+      </p>
+
+      <div class="hero-cta">
+        <button class="btn-neu btn-primary" onclick="document.getElementById('principles').scrollIntoView({behavior:'smooth'})">
+          <span>6대 설계 원칙 살펴보기</span>
+        </button>
+        <button class="btn-neu" onclick="document.getElementById('architecture').scrollIntoView({behavior:'smooth'})">
+          <span>시스템 아키텍처</span>
+        </button>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-cy">11</div>
+          <div class="stat-label">Specialist Agents</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-pk">6</div>
+          <div class="stat-label">RiskGuard Stages</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-cy">5</div>
+          <div class="stat-label">AHE Meta Layers</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-pk">5</div>
+          <div class="stat-label">Operation Gates</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-cy">69</div>
+          <div class="stat-label">FastAPI Routes</div>
+        </div>
+        <div class="stat-card neu-raised">
+          <div class="stat-number text-pk">239</div>
+          <div class="stat-label">KRX Symbols</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== IDENTITY ===== -->
+    <section id="identity" class="section">
+      <div class="section-head">
+        <span class="section-tag">Identity</span>
+        <h2>왜 <span class="text-cy">AlphaForge</span> 인가?</h2>
+        <p class="section-lead">
+          AlphaForge는 단순히 돈을 벌어다 주는 블랙박스 소프트웨어가 아닙니다.
+          이것은 설계자의 투자 철학과 운용 원칙을 <b>외부 신경계(external nervous system)</b>로 시스템화한 정교한 결정체입니다.
+          본 시스템은 AI의 창의성보다 <b>재현 가능성(reproducibility)</b>에 집중합니다.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-cy">⌘</span></div>
+          <h3>외부 신경계 모델</h3>
+          <p>AI를 독립적인 의사결정자로 두지 않고, 설계자의 두뇌를 확장한 외부 신경계로 정의합니다. 어제 수익을 냈던 논리가 오늘 LLM의 변덕으로 바뀌어서는 안 됩니다.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-pk">⊠</span></div>
+          <h3>환각의 시스템적 차단</h3>
+          <p>통제되지 않은 AI는 금융 시스템 내에서 치명적인 환각(Hallucination)을 일으켜 자산을 순식간에 소멸시킬 수 있습니다. AHE 5개 레이어와 KFinOnto 온톨로지로 환각을 사전·사중에 차단합니다.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-cy">◇</span></div>
+          <h3>화이트박스 시스템</h3>
+          <p>모든 의사결정에 <code>reason_code</code>와 <code>reason_text</code>가 첨부됩니다. "AI가 거부했습니다"가 아니라 "VaR 3.2%가 한도 3.0%를 초과했습니다"처럼 측정 가능한 metric으로 설명됩니다.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-pk">▣</span></div>
+          <h3>Hash-Chained Audit</h3>
+          <p>모든 의사결정이 PostgreSQL <code>audit_trail</code>에 SHA-256 hash chain으로 기록되며, 매주 OpenTimestamps로 비트코인 블록체인에 앵커링되어 사후 변조가 암호학적으로 불가능합니다.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-cy">◐</span></div>
+          <h3>가시성 ≠ 가독성</h3>
+          <p>가시성은 시스템의 책임, 가독성은 운용자의 책임. 평시 90%엔 핵심 5개 지표만, 깊이 볼 때 11개 노드 흐름 즉시 펼침. <b>보잉 787 글래스 콕핏</b>을 모델로 합니다.</p>
+        </div>
+        <div class="card neu-raised card-hover">
+          <div class="card-icon neu-pressed"><span class="ico-pk">◈</span></div>
+          <h3>오케스트라 모델</h3>
+          <p>LangGraph Supervisor(마에스트로)가 10명의 Specialist Agent를 지휘. 단원이 자기 악기만 연주하듯, 각 에이전트는 <code>tools.profile</code>에 명시된 도구만 사용 가능. 권한 분리(Privilege Separation)가 코드 레벨에서 강제됩니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6 PRINCIPLES ===== -->
+    <section id="principles" class="section">
+      <div class="section-head">
+        <span class="section-tag">Design Principles</span>
+        <h2>절대 위반하지 않는 <span class="text-pk">6대 설계 원칙</span></h2>
+        <p class="section-lead">
+          Brian의 45년 엔지니어링 경험과 AEGIS · LLMOps · wdlab-CLI · LOAN4U · ARGUS · NexusAI · FileForge에서
+          검증된 운영 노하우에서 도출된 6가지 원칙. 이 원칙은 어떤 경우에도 우회하지 않습니다.
+        </p>
+      </div>
+
+      <div class="principles">
+        <div class="principle neu-raised">
+          <span class="principle-num">PRINCIPLE 01</span>
+          <h4>기존 API 계층 비변경</h4>
+          <p>vLLM, Ray Serve, Wazuh, Kafka, OpenSearch 등 기존 인프라는 그대로 둡니다. AlphaForge가 추가되어도 기존 워크로드의 안정성에 영향 0.</p>
+        </div>
+        <div class="principle neu-raised">
+          <span class="principle-num">PRINCIPLE 02</span>
+          <h4>추가형 얇은 라우팅 셸</h4>
+          <p>OpenClaw가 채널·MCP·도구 라우팅만 담당. 비즈니스 로직은 vLLM 뒷단의 순수 API 계층에서. <b>OpenClaw는 트레이딩 엔진이 아니라 게이트웨이</b>.</p>
+        </div>
+        <div class="principle neu-raised">
+          <span class="principle-num">PRINCIPLE 03</span>
+          <h4>80% 이상 인프라 재사용</h4>
+          <p>AHE 적용 시 약 87% 재사용률. 신규 컴포넌트는 Broker MCP, Strategy SKILLs, RiskGuard 모듈로 한정.</p>
+        </div>
+        <div class="principle neu-raised">
+          <span class="principle-num">PRINCIPLE 04</span>
+          <h4>멀티 에이전트 하네스 엔지니어링</h4>
+          <p>LangGraph Supervisor 위에 10명의 Specialist를 배치하는 패턴은 ARGUS와 동형(isomorphic). 동일 운영 패턴이므로 학습 비용 0.</p>
+        </div>
+        <div class="principle neu-raised">
+          <span class="principle-num">PRINCIPLE 05</span>
+          <h4>오픈소스 우선</h4>
+          <p>상용 SaaS 의존을 최소화. 외부 LLM 호출은 prefix block(<code>gpt-</code>, <code>claude-</code>, <code>azure/</code>)으로 차단. 단, 브로커 API는 불가피한 외부 의존.</p>
+        </div>
+        <div class="principle neu-raised">
+          <span class="principle-num">PRINCIPLE 06</span>
+          <h4>5단계 게이팅</h4>
+          <p>Backtest → Paper → Shadow → Limited Live → Full Live. <b>단계 간 자동 승급은 절대 금지</b>. 사람의 명시적 수동 승인을 통해서만 진입 가능.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHITEBOX ===== -->
+    <section id="whitebox" class="section">
+      <div class="section-head">
+        <span class="section-tag">White-box Promise</span>
+        <h2><span class="text-cy">화이트박스</span>의 7가지 구조적 증거</h2>
+        <p class="section-lead">
+          AlphaForge가 화이트박스 시스템임은 다음 7가지 구조적 증거로 입증됩니다.
+          이 증거들은 운용자가 시스템을 신뢰하기 위해 필요한 모든 검증 가능한 정보를 제공합니다.
+        </p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">①</span></div>
+          <h3>소스 코드 공개</h3>
+          <p>모든 코드가 Brian의 GitHub 조직(<code>wdlab1958</code>) 안에 있습니다. 외부 의존 코드는 모두 라이선스가 명시된 오픈소스입니다.</p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">②</span></div>
+          <h3>명시적 데이터 구조</h3>
+          <p>Schema Layer가 모든 노드 간 전이를 Pydantic 모델로 강제합니다. <code>OrderProposal</code>·<code>Signal</code>·<code>RiskDecision</code>·<code>DecisionToken</code>·<code>AuditEntry</code>.</p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-pk">③</span></div>
+          <h3>강제 감사 기록</h3>
+          <p>Audit Layer가 모든 의사결정을 hash-chained PostgreSQL <code>audit_trail</code> + OpenSearch <code>alphaforge-audit-*</code>에 기록.</p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-pk">④</span></div>
+          <h3>암호 서명된 권한</h3>
+          <p>Decision Token이 모든 권한 행사를 Ed25519로 서명. 토큰 없는 주문은 broker MCP 호출 자체가 차단됩니다.</p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">⑤</span></div>
+          <h3>결정의 재현성</h3>
+          <p>Determinism Layer가 LLM 호출을 캐시(<code>sha256(prompt+input+model+seed+temp)</code>). Backtest와 Live가 동일한 의사결정 경로를 따릅니다.</p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">⑥</span></div>
+          <h3>추적 가능한 진화</h3>
+          <p>Evolution Layer가 GEPA 진화를 git처럼 버전 추적. Bonferroni correction으로 통계적 유의성 검증, 회귀 시 자동 롤백.</p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-pk">⑦</span></div>
+          <h3>명시적 사유 첨부</h3>
+          <p>모든 의사결정에 <code>reason_code</code>(예: <code>VAR_EXCEEDED</code>)와 <code>reason_text</code>가 첨부됩니다. 측정 가능한 metric으로 설명.</p>
+        </div>
+      </div>
+
+      <div class="quote-banner neu-raised" style="margin-top: 30px;">
+        <blockquote>
+          기술의 효율성을 믿되, 그 효율성이 인간의 통제를 벗어나는 순간을 잊지 마십시오.
+          AlphaForge는 <b>철저하게 계산된 공학적 안전 위에서 춤추는 지적인 여정</b>입니다.
+        </blockquote>
+        <cite>— Brian Lee, Research Director, A3 Security Co., Ltd.</cite>
+      </div>
+    </section>
+
+    <!-- ===== AHE 5 META LAYERS ===== -->
+    <section id="ahe" class="section">
+      <div class="section-head">
+        <span class="section-tag">Agent Harness Engineering</span>
+        <h2>야생마에 마구를 채우는 <span class="text-pk">AHE 5개 메타 레이어</span></h2>
+        <p class="section-lead">
+          AHE(Agent Harness Engineering)는 야생마에게 마구(Harness)를 채워 마차를 끌게 하듯,
+          AI의 추론 능력을 강력한 코드 게이트 안에 가두는 기술입니다.
+          11개 에이전트 노드 위에 횡단(cross-cutting)으로 적용됩니다.
+        </p>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar neu-raised">
+          <div class="pillar-num neu-pressed">L1</div>
+          <h3 class="pillar-title text-cy">Schema Layer</h3>
+          <div class="pillar-tags">
+            <span>Pydantic 강제</span><span>10+ Models</span><span>field_validator</span>
+          </div>
+          <p>모든 노드 간 state 전이를 Pydantic 모델로 강제. <code>OrderProposal</code>·<code>Signal</code>·<code>RiskDecision</code>·<code>DecisionToken</code>·<code>AuditEntry</code>·<code>AlphaForgeState</code> 등 10+ 모델. 입력 자체가 변조 불가능.</p>
+        </div>
+
+        <div class="pillar neu-raised">
+          <div class="pillar-num neu-pressed">L2</div>
+          <h3 class="pillar-title text-pk">Audit Layer</h3>
+          <div class="pillar-tags">
+            <span>Hash Chain</span><span>SHA-256</span><span>OpenTimestamps</span><span>WORM</span>
+          </div>
+          <p>Hash-chained PostgreSQL <code>audit_trail</code> + OpenSearch 인덱스. <code>cycle_id</code> 기반 11개 노드 흐름 재구성 가능. SHA-256 chain 무결성 깨지면 자동 정지. 매주 OpenTimestamps 비트코인 앵커링.</p>
+        </div>
+
+        <div class="pillar neu-raised">
+          <div class="pillar-num neu-pressed">L3</div>
+          <h3 class="pillar-title text-cy">Policy Layer</h3>
+          <div class="pillar-tags">
+            <span>3-Gate</span><span>tools.profile</span><span>providerPolicy</span><span>Ed25519</span>
+          </div>
+          <p>3-gate 권한 분리 — <code>tools.profile</code>(에이전트별 도구) + <code>providerPolicy</code>(외부 LLM 차단) + <b>Decision Token Ed25519 10초 TTL</b>. ExecutionAgent의 <code>place_order</code>는 토큰 없으면 OpenClaw 하네스에서 차단.</p>
+        </div>
+
+        <div class="pillar neu-raised">
+          <div class="pillar-num neu-pressed">L4</div>
+          <h3 class="pillar-title text-pk">Determinism Layer</h3>
+          <div class="pillar-tags">
+            <span>LLM Cache</span><span>Backtest = Live</span><span>seed + temp</span>
+          </div>
+          <p>LLM 호출 결과 캐시. 캐시 키 = <code>sha256(prompt_template_version + input_hash + model + seed + temperature)</code>. 동일 입력에 동일 출력을 보장하여 Backtest와 Live가 동일 결정 경로.</p>
+        </div>
+
+        <div class="pillar neu-raised pillar-wide">
+          <div class="pillar-num neu-pressed">L5</div>
+          <h3 class="pillar-title text-cy">Evolution Layer</h3>
+          <div class="pillar-tags">
+            <span>GEPA 0~2세대</span><span>SkillForge</span><span>Bonferroni</span><span>Auto-Rollback</span><span>Bayesian Optimization</span>
+          </div>
+          <p>GEPA(Genetic-Evolution Prompt Adaptation) 자동 진화 + SkillForge 자동 후보 생성. Bonferroni correction으로 통계적 유의성 검증. <b>3세대 이상은 overfit 위험으로 보수적 제한</b>. 진화 대상은 프롬프트 텍스트·retrieval top-k·temperature 같은 parameter만이며, 매매 로직·RiskGuard 한도·11개 노드 구조는 절대 진화 대상이 아닙니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AGENTS 11 ===== -->
+    <section id="agents" class="section">
+      <div class="section-head">
+        <span class="section-tag">Multi-Agent Orchestra</span>
+        <h2>오케스트라의 <span class="text-pk">11명의 단원</span></h2>
+        <p class="section-lead">
+          LangGraph Supervisor(마에스트로) 1명 + 10명의 Specialist Agent. 정보 흐름의 단계에 따라 4그룹으로 분류됩니다.
+          엄격한 품질 검사관인 <b>RiskGuard의 승인 없이는 어떤 신호도 시장에 도달할 수 없습니다.</b>
+        </p>
+      </div>
+
+      <div class="agents">
+        <!-- Supervisor -->
+        <div class="agent agent-supervisor">
+          <div class="agent-head">
+            <h4 class="text-cy">🎼 LangGraph Supervisor — 마에스트로</h4>
+            <span class="agent-badge b-conduct">Orchestrator</span>
+          </div>
+          <p>11개 노드의 오케스트레이션, halt 처리, race condition 방지. Sequential 모드(디버깅·백테스트)와 Parallel 모드(<code>Annotated[list[Signal], operator.add]</code> 리듀서로 fan-out)를 모두 지원하며, 두 모드의 출력 신호 집합 일치를 매 빌드마다 검증.</p>
+          <div class="agent-tools">cycle_id (UUID) · Checkpointing: PostgreSQL · Trigger: 분봉(NATS tick) · 일봉(Cron 09:05/14:50) · 이벤트(News) · 수동(/run)</div>
+        </div>
+
+        <!-- Group 1: Information Collection -->
+        <div class="agent neu-raised">
+          <div class="agent-head"><h4>🔵 MarketDataAgent</h4><span class="agent-badge">Read</span></div>
+          <p>활성 종목의 실시간 시세·호가·체결 데이터 수집과 정규화. 5초 이상 stale 시 cycle skip.</p>
+          <div class="agent-tools">KIS Open API · Kafka market.tick · WS paper:31000 / live:21000</div>
+        </div>
+
+        <div class="agent neu-raised">
+          <div class="agent-head"><h4>📰 NewsAnalystAgent</h4><span class="agent-badge">Read</span></div>
+          <p>뉴스·공시·SNS 센티먼트 분석. RAG retrieval → LLM reason → score 3-step sub-graph. KFinOnto peer set 사전 주입으로 환각 차단.</p>
+          <div class="agent-tools">Qdrant Vector · Qwen3 / exaone3.5 · DART API · Keyword fallback</div>
+        </div>
+
+        <div class="agent neu-raised">
+          <div class="agent-head"><h4>📊 FundamentalAnalystAgent</h4><span class="agent-badge">Read</span></div>
+          <p>재무제표·밸류에이션·이벤트 캘린더 기반 가치 점수. 섹터 동종 비교(peer benchmark) PER/PBR/ROE 백분위 점수화.</p>
+          <div class="agent-tools">DART OpenAPI fnlttSinglIndx · FundamentalsStore · timestamp 보존</div>
+        </div>
+
+        <div class="agent neu-raised">
+          <div class="agent-head"><h4>📈 TechnicalAnalystAgent</h4><span class="agent-badge">Read</span></div>
+          <p>TA-Lib 지표·차트 패턴·Regime 분류(trending/ranging/volatile). Pure numpy 구현으로 C 의존성 0.</p>
+          <div class="agent-tools">SMA/EMA/RSI/MACD/Bollinger/ATR · daily_bars · volume_profile</div>
+        </div>
+
+        <!-- Group 2: Decision -->
+        <div class="agent neu-raised">
+          <div class="agent-head"><h4>🎯 StrategyAgent</h4><span class="agent-badge">Read-Only</span></div>
+          <p>멀티 시그널 융합 → OrderProposal 생성. <b>직접 주문권 없음</b>. SourceWeightLearner(EMA + Hedge)가 per-source 정확도를 누적 학습.</p>
+          <div class="agent-tools">SKILL.md 4종 · momentum / mean-reversion / pair-trading / dsl-trend</div>
+        </div>
+
+        <div class="agent neu-raised agent-deny">
+          <div class="agent-head"><h4>🛡 RiskGuardAgent</h4><span class="agent-badge b-deny">Deny</span></div>
+          <p><b>유일한 fail-closed 관문</b>. 6단계 검증 중 하나라도 실패 시 즉시 DENY. 평가 시간 &lt; 10ms. 미잡힌 예외도 무조건 DENY.</p>
+          <div class="agent-tools">6 Stages · Ed25519 sign · Heartbeat 30s TTL · audit_id 멱등키</div>
+        </div>
+
+        <div class="agent neu-raised agent-write">
+          <div class="agent-head"><h4>⚡ ExecutionAgent</h4><span class="agent-badge b-write">Write</span></div>
+          <p><b>시스템에서 유일한 write 권한자</b>. Decision Token 없으면 broker MCP 호출 차단. 멱등성 키 + 24시간 Redis 캐시로 중복 주문 원천 차단.</p>
+          <div class="agent-tools">Broker MCP · KIS Primary + LS Secondary · FailoverBroker</div>
+        </div>
+
+        <!-- Group 3: Tracking -->
+        <div class="agent neu-raised">
+          <div class="agent-head"><h4>💼 PortfolioAgent</h4><span class="agent-badge">Read</span></div>
+          <p>P&amp;L·익스포저·Sharpe·MDD 실시간 추적. 8개 메트릭(현금·평가금액·포지션·일일/누적 P&amp;L·MDD·익스포저·Sharpe).</p>
+          <div class="agent-tools">PostgreSQL ledger · Redis 가격 캐시 · GET /portfolio</div>
+        </div>
+
+        <div class="agent neu-raised">
+          <div class="agent-head"><h4>⚖ ComplianceAgent</h4><span class="agent-badge">Audit</span></div>
+          <p>자본시장법·거래소 룰·시세조종 패턴 자가검증. Wash-trade·Self-cross·Layering 탐지. 연말 세무 자료 자동 생성.</p>
+          <div class="agent-tools">거래세 0.15% + 농특세 · 대주주 양도세 · FIFO 로트 · 14컬럼 CSV</div>
+        </div>
+
+        <div class="agent neu-raised">
+          <div class="agent-head"><h4>📡 CommunicatorAgent</h4><span class="agent-badge">I/O</span></div>
+          <p>Telegram 알림·일일 리포트·Kill Switch 응답. 자연어 명령 파서(LLM-first JSON, regex fallback). CRITICAL 알림 30분 미응답 시 APNs escalate.</p>
+          <div class="agent-tools">/halt /resume /status /portfolio /run · HMAC · MarkdownV2 · APNs Ed25519</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RISKGUARD 6 STAGES ===== -->
+    <section id="riskguard" class="section">
+      <div class="section-head">
+        <span class="section-tag">Pre-Trade Validation</span>
+        <h2>RiskGuard <span class="text-pk">6단계 검증 파이프라인</span></h2>
+        <p class="section-lead">
+          모든 매매 주문은 다음 6단계 관문을 순차적으로 통과해야 합니다.
+          한 단계라도 실패하면 즉시 DENY되며, Fail-Closed 모드로 진입합니다.
+          평가 시간 &lt; 10ms를 유지하여 실시간 거래에 영향을 주지 않습니다.
+        </p>
+      </div>
+
+      <div class="stages">
+        <div class="stage-step neu-raised">
+          <div class="stage-num">1</div>
+          <h4>Schema Validation</h4>
+          <p>주문 파라미터 형식, 필수 필드, 종목코드 유효성. Pydantic <code>OrderProposal</code> + KRX 화이트리스트.</p>
+          <div class="stage-deny">OVERSIZED · INVALID_SYMBOL · MALFORMED_REQUEST</div>
+        </div>
+        <div class="stage-step neu-raised">
+          <div class="stage-num">2</div>
+          <h4>Market State Check</h4>
+          <p>시장 개장·거래정지·VI(Volatility Interruption)·Circuit Breaker. KRX 거래 캘린더(2024~2027) 기반.</p>
+          <div class="stage-deny">MARKET_CLOSED · STOCK_HALTED · VI_TRIGGERED · CIRCUIT_BREAKER_ACTIVE</div>
+        </div>
+        <div class="stage-step neu-raised">
+          <div class="stage-num">3</div>
+          <h4>Position Limits</h4>
+          <p>동시 보유 ≤5종목, 종목당 ≤10%, 일일 매매 ≤3회, 전략당 ≤30%(STRATEGY_OVER_CAP).</p>
+          <div class="stage-deny">TOO_MANY_POSITIONS · OVERSIZED · OVERTRADE · STRATEGY_OVER_CAP</div>
+        </div>
+        <div class="stage-step neu-raised">
+          <div class="stage-num">4</div>
+          <h4>Risk Metrics</h4>
+          <p>VaR(95%, 1day) ≤ 자본의 3%. 신규 포지션 추가 후 상관계수 평균 ≤ 0.7. Kelly 기반 권장 사이즈 비교.</p>
+          <div class="stage-deny">VAR_EXCEEDED · CORRELATION_TOO_HIGH</div>
+        </div>
+        <div class="stage-step neu-raised">
+          <div class="stage-num">5</div>
+          <h4>Realized P&amp;L Gate</h4>
+          <p>일일 누적 손실 ≥ 자본의 2% 시 매수 거부(청산만). 5분 누적 손실 ≥ 1% 시 30분 거래 중단.</p>
+          <div class="stage-deny">DAILY_LOSS_LIMIT · CIRCUIT_BREAKER</div>
+        </div>
+        <div class="stage-step neu-raised">
+          <div class="stage-num">6</div>
+          <h4>Compliance Cross-Check</h4>
+          <p>시세조종·자전거래·미공개정보 의심 timestamp 검사. ComplianceAgent의 3종 탐지기와 동기화.</p>
+          <div class="stage-deny">WASH_TRADE · SELF_CROSS · LAYERING · INSIDER_INFO_SUSPICION</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 28px;">
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">∑</span></div>
+          <h3>Position Sizing — 최솟값의 원칙</h3>
+          <p>세 가지 방식의 가중평균이 아니라 <b>최솟값</b>을 선택합니다. <code>min(Fixed Fractional, Volatility Targeting, Fractional Kelly, hard_cap)</code>. 각 방식이 서로 다른 위험 가정을 하므로, 가장 보수적인 가정이 항상 채택됩니다.</p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-pk">♥</span></div>
+          <h3>Heartbeat &amp; Self-Halt</h3>
+          <p>RiskGuard 자체가 죽으면 시스템 전체가 fail-closed로 진입. Redis 30초 TTL heartbeat key. RiskGuard 응답 없으면 ExecutionAgent도 fail-closed. 재기동 시 마지막 상태를 PostgreSQL에서 복구.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DECISION TOKEN ===== -->
+    <section id="token" class="section">
+      <div class="section-head">
+        <span class="section-tag">Cryptographic Authorization</span>
+        <h2>위조 불가능한 <span class="text-pk">Decision Token</span></h2>
+        <p class="section-lead">
+          RiskGuard의 6단계 검증을 통과한 주문에는 <b>결정 토큰(Decision Token)</b>이라는 디지털 서명이 부여됩니다.
+          이는 공장의 품질 검사관이 찍는 최종 합격 도장과 같습니다.
+          <code>StrategyAgent → RiskGuardAgent(서명) → ExecutionAgent</code>의 권한 분리(RBAC)를 암호학적으로 강제합니다.
+        </p>
+      </div>
+
+      <div class="token-block">
+        <div class="token-card neu-raised">
+          <span class="token-stamp">Ed25519 · TTL 10s</span>
+          <h3 style="font-size:18px; font-weight:700; margin-bottom:6px;">디지털 도장 비유</h3>
+          <p style="font-size:13.5px; color:var(--text-2); line-height:1.7;">"도장이 있어야만 출하 가능"의 정확한 구현.</p>
+          <ul class="token-list">
+            <li><b>알고리즘</b>Ed25519 (Edwards-curve, Curve25519), 64 bytes signature</li>
+            <li><b>키 관리</b><code>alphaforge-keygen</code> CLI · <code>keys/</code> 폴더 mode 0600</li>
+            <li><b>TTL</b>10초 (Replay attack 차단)</li>
+            <li><b>발행자</b>RiskGuard 단독. StrategyAgent는 발행 권한 없음</li>
+            <li><b>검증 위치</b>broker MCP gateway에서 서명 재검증</li>
+            <li><b>멱등 키</b><code>audit_id</code> = idempotency_key. Redis 24h 캐시</li>
+            <li><b>Claim 커버리지</b>symbol·side·qty·order_type·limit_price 전체</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="token-json neu-pressed">
+<span class="c">// RiskGuard가 발행한 Decision Token</span>
+{
+  <span class="k">"audit_id"</span>: <span class="s">"5f8c…d3e9"</span>,
+  <span class="k">"issuer"</span>: <span class="s">"RiskGuardAgent"</span>,
+  <span class="k">"issued_at"</span>: <span class="s">"2026-05-03T14:21:08.412Z"</span>,
+  <span class="k">"expires_at"</span>: <span class="s">"2026-05-03T14:21:18.412Z"</span>,
+  <span class="k">"payload_hash"</span>: <span class="s">"sha256:af71…b9c2"</span>,
+  <span class="k">"order"</span>: {
+    <span class="k">"symbol"</span>:      <span class="s">"005930"</span>,
+    <span class="k">"side"</span>:        <span class="s">"BUY"</span>,
+    <span class="k">"qty"</span>:         <span class="n">42</span>,
+    <span class="k">"order_type"</span>:  <span class="s">"LIMIT"</span>,
+    <span class="k">"limit_price"</span>: <span class="n">71800</span>
+  },
+  <span class="k">"riskguard"</span>: {
+    <span class="k">"stages_passed"</span>: <span class="n">6</span>,
+    <span class="k">"var_pct"</span>:       <span class="n">2.1</span>,
+    <span class="k">"reason_code"</span>:   <span class="s">"OK"</span>
+  },
+  <span class="k">"signature"</span>: <span class="s">"ed25519:7f3a…0d4b"</span>
+}
+          </div>
+          <p style="margin-top:14px; font-size:12.5px; color:var(--text-3); line-height:1.6;">
+            <code>payload_hash</code>가 주문 필드를 모두 커버하므로, 토큰을 받은 후 주문 내용을 조작하면 hash가 바뀌어 서명이 즉시 깨집니다.
+            토큰 위조 / 변조 / 재전송이 모두 암호학적으로 불가능합니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5-STAGE GATES ===== -->
+    <section id="gates" class="section">
+      <div class="section-head">
+        <span class="section-tag">5-Stage Operation Gating</span>
+        <h2>자전거 비유로 설명되는 <span class="text-cy">5단계 운용 게이트</span></h2>
+        <p class="section-lead">
+          처음부터 두 발 자전거를 타는 사람은 없습니다. 보조바퀴(Stage 1~2)로 균형을 잡고,
+          평지 천천히(Stage 3) 자신감을 쌓고, 짧은 거리(Stage 4)부터 시작하여 마지막에 자유롭게(Stage 5) 달립니다.
+          <b>단계 간 자동 승급은 코드와 인프라 양쪽에 다중으로 차단</b>되어 있습니다.
+        </p>
+      </div>
+
+      <div class="gates">
+        <div class="gate neu-raised">
+          <span class="gate-tag">Stage 1</span>
+          <h4>Backtest</h4>
+          <p>가상 시간 가상 자본. 252일+ 시세 EventBus 시간순 dispatch + SimulatedBroker 3단계 슬리피지.</p>
+          <div class="gate-meta">실 KIS API 0건 · Walk-Forward IS 4년 / OOS 1년</div>
+        </div>
+        <div class="gate neu-raised">
+          <span class="gate-tag">Stage 2</span>
+          <h4>Paper Trading</h4>
+          <p>KIS 모의 계좌(가상 1억). 4주 동안 10개 승급 기준 자동 검증.</p>
+          <div class="gate-meta">/promote stage3 · ComplianceAgent 자동 검증</div>
+        </div>
+        <div class="gate neu-raised">
+          <span class="gate-tag">Stage 3</span>
+          <h4>Shadow Mode</h4>
+          <p>실시장 신호로 모의 P&amp;L 추적. 시뮬-실거래 P&amp;L 일치도 5% 이내 검증.</p>
+          <div class="gate-meta">14일 · 실시장 데이터 직접 사용</div>
+        </div>
+        <div class="gate neu-raised">
+          <span class="gate-tag">Stage 4</span>
+          <h4>Limited Live</h4>
+          <p>실 자본 최초 진입. 최대 100만원 한정. 28일 일일 손실 한도 위반 0건.</p>
+          <div class="gate-meta">alphaforge-doctor GREEN · ArgoCD 수동 sync · 인증서 ≥ 90d</div>
+        </div>
+        <div class="gate neu-raised">
+          <span class="gate-tag tg-current">Stage 5</span>
+          <h4>Full Live</h4>
+          <p>정상 자본 투입 + 상시 운용. 일간 리뷰·분기 백테스트 재검증·월간 GEPA 진화.</p>
+          <div class="gate-meta">Sharpe ≥ 1.0 · MDD ≤ 15% 일관 유지가 목표</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 28px;">
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">⊘</span></div>
+          <h3>자동 승급 절대 금지 — 4중 게이트</h3>
+          <p>
+            <b>① Helm chart 강제</b> — <code>mode=live + stage&lt;4</code>에서 <code>{{ fail }}</code> 방어<br/>
+            <b>② ArgoCD 수동 sync</b> — production 환경 변경은 수동 클릭만 허용<br/>
+            <b>③ Telegram 서명 명령</b> — 운영자 chat_id 인증 후 명시적 명령<br/>
+            <b>④ 운영자 인증서</b> — Sharpe ≥ 1.0, MDD ≤ 15%, ≥ 30 trades + Ed25519 sign-off + 90일 만료
+          </p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-pk">⌖</span></div>
+          <h3>Stage 2 → Stage 3 승급 10개 기준</h3>
+          <p style="font-size:13px; line-height:1.7;">
+            슬리피지 ≤ 백테스트 추정의 30% · Sharpe ≥ 0.7 · Schema/Token/Hash chain 위반 0 ·
+            일일 손실 한도(2%) 위반 0 · 동시 보유 ≤ 5 · Heartbeat 끊김 ≤ 1회 · Telegram 지연 ≤ 5s ·
+            페일오버 정상 동작 검증 완료
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STRATEGIES 4 ===== -->
+    <section id="strategies" class="section">
+      <div class="section-head">
+        <span class="section-tag">Trading Strategies</span>
+        <h2>SKILL.md 형식으로 표준화된 <span class="text-cy">활용 전략 4종</span></h2>
+        <p class="section-lead">
+          AlphaForge에서 모든 전략은 <code>SKILL.md</code> 한 파일로 표현됩니다 (YAML frontmatter + 마크다운 본문).
+          전략은 <b>AI가 발견하지 않습니다</b>. Brian의 45년 경험과 검증된 퀀트 문헌(Andreas Clenow, Ernie Chan)에서
+          도출된 가설을 안전하게 실행할 뿐입니다.
+        </p>
+      </div>
+
+      <div class="strategies">
+        <div class="strategy neu-raised">
+          <div class="strategy-head">
+            <h4>Momentum Breakout</h4>
+            <span class="strategy-sharpe">Sharpe 1.2</span>
+          </div>
+          <div class="strategy-philo">"20일 신고가를 돌파하는 종목은 추세를 형성한다"는 전통적 추세추종 가설</div>
+          <div class="strategy-cond">
+            <ul>
+              <li>종가 &gt; 20일 최고가</li>
+              <li>거래량 &gt; 20일 평균 × 1.5</li>
+              <li>20일 모멘텀 &gt; 0 + 200일 SMA 위(장기추세 필터)</li>
+              <li>시가총액 &gt; 1,000억 KRW (유동성)</li>
+              <li>KOSPI200 또는 KOSDAQ150 편입</li>
+            </ul>
+          </div>
+          <div class="strategy-foot">
+            <span>BUY</span><span>size 8%</span><span>SL −8%</span><span>TP +20%</span><span>trail 5%</span><span>holding 5~20d</span>
+          </div>
+        </div>
+
+        <div class="strategy neu-raised">
+          <div class="strategy-head">
+            <h4>Mean Reversion RSI</h4>
+            <span class="strategy-sharpe">Sharpe 0.9</span>
+          </div>
+          <div class="strategy-philo">"RSI 30 이하 + Bollinger 하단 터치는 일시적 과매도이며 평균으로 회귀한다"</div>
+          <div class="strategy-cond">
+            <ul>
+              <li>RSI(14) &lt; 30 (과매도)</li>
+              <li>종가 &lt; Bollinger 하단 (20일, 2σ)</li>
+              <li>200일 SMA 위 (하락 추세 종목 제외)</li>
+              <li>최근 5일 ATR ≤ 평소 1.5배 (이상치 제거)</li>
+              <li>거래정지·관리종목·우선주 제외</li>
+            </ul>
+          </div>
+          <div class="strategy-foot">
+            <span>BUY</span><span>size 5%</span><span>SL −5%</span><span>TP 20D SMA</span><span>holding 1~5d</span>
+          </div>
+        </div>
+
+        <div class="strategy neu-raised">
+          <div class="strategy-head">
+            <h4>Pair Trading Cointegration</h4>
+            <span class="strategy-sharpe">Sharpe 1.5</span>
+          </div>
+          <div class="strategy-philo">"공적분 관계가 있는 두 종목의 spread는 평균으로 회귀한다"는 통계적 차익거래</div>
+          <div class="strategy-cond">
+            <ul>
+              <li>동일 섹터 + Engle-Granger p-value &lt; 0.05</li>
+              <li>최근 252일 상관계수 &gt; 0.7</li>
+              <li>z_score &gt; +2 → SHORT_A + LONG_B</li>
+              <li>z_score &lt; −2 → LONG_A + SHORT_B</li>
+              <li>|z_score| &lt; 0.5 → 청산 / |z| &gt; 4 → 강제 청산</li>
+            </ul>
+          </div>
+          <div class="strategy-foot">
+            <span>PAIR</span><span>size 6%</span><span>holding ≤15d</span><span>market_neutral</span><span>월 1회 재선정</span>
+          </div>
+        </div>
+
+        <div class="strategy neu-raised">
+          <div class="strategy-head">
+            <h4>DSL Trend</h4>
+            <span class="strategy-sharpe">Phase 54</span>
+          </div>
+          <div class="strategy-philo">SKILL.md 본문의 <code>dsl:</code> 블록을 백엔드 부팅 시 자동 컴파일하는 안전한 전략 표현 언어</div>
+          <div class="strategy-cond">
+            <ul>
+              <li>Python <code>ast</code> 제한 파서</li>
+              <li>9개 지표 + 5개 패널명 화이트리스트</li>
+              <li>속성·서브스크립트·kwargs·미지정 식별자 거부</li>
+              <li>빈 <code>__builtins__</code>로 안전 eval</li>
+              <li>Hypothesis 속성 기반 테스트 검증 (200 examples)</li>
+            </ul>
+          </div>
+          <div class="strategy-foot">
+            <span>DSL</span><span>SKILL.md</span><span>safe-eval</span><span>property-based</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-banner neu-raised" style="margin-top: 32px;">
+        <blockquote>
+          "백테스트는 통과 기준이 아니라 <b>탈락 기준</b>이다.<br/>
+          Sharpe 1.5의 백테스트가 실거래 0.3을 만들 수도 있지만,<br/>
+          백테스트에서조차 0.5인 전략이 실거래에서 1.0을 만드는 경우는 없다."
+        </blockquote>
+        <cite>— 통합 가이드북 §11.3 Stage 1 핵심 메시지</cite>
+      </div>
+    </section>
+
+    <!-- ===== KFinOnto ===== -->
+    <section id="ontology" class="section">
+      <div class="section-head">
+        <span class="section-tag">Hallucination Prevention</span>
+        <h2>의미적 환각 차단 — <span class="text-cy">KFinOnto</span> 한국 금융 온톨로지</h2>
+        <p class="section-lead">
+          Phase 67에서 도입된 KFinOnto(Korean Financial Ontology)는 LLM의 환각을 의미 수준에서 차단합니다.
+          RiskGuard 6단계 이전에 <b>Stage 0</b>으로 실행되며, 4개 메커니즘 + 6개 SHACL-equivalent 룰로 구성됩니다.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">⊞</span></div>
+          <h3>6개 SHACL-equivalent 규칙</h3>
+          <p style="font-size:13px; line-height:1.75;">
+            <b>RULE-1</b> unknown_symbol — 화이트리스트 외 거부<br/>
+            <b>RULE-2</b> regulatory_status — HALTED/DELISTED 거부<br/>
+            <b>RULE-3</b> side ∈ (BUY, SELL) — 잘못된 방향 거부<br/>
+            <b>RULE-4</b> market_cap_floor / forbidden_sector — 전략별 사전조건<br/>
+            <b>RULE-5</b> index_membership — KOSPI200/KOSDAQ150 편입 검증<br/>
+            <b>RULE-6</b> tier-4 alone never fires — LLM 단독 추론만으론 절대 주문 안 됨
+          </p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-pk">◐</span></div>
+          <h3>Pre-LLM Context Injection</h3>
+          <p style="font-size:13px; line-height:1.75;">
+            <code>pre_llm_context()</code> 헬퍼가 NewsAnalyst의 프롬프트에 동종 산업 peer set을 사전 주입.<br/><br/>
+            예시: <code>005930</code>(삼성전자) 분석 시 <code>peers=000660(SK하이닉스), 005935(삼성전자우)…</code>를 audit chain에 포함.<br/><br/>
+            LLM이 임의로 영향 종목을 추론하는 것을 사전에 막아 환각을 차단합니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top: 24px;">
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">①</span></div>
+          <h3>Phase A — 클래스 계층 확장</h3>
+          <p>Asset(Equity/Derivative/Bond) · Theme · Event · RiskFactor · ComplianceRule · TradingStrategy</p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">②</span></div>
+          <h3>Phase B — SHACL 룰</h3>
+          <p><code>ontology/shacl/order_shape.ttl</code> — OrderShape + StrategyShape (rdf-aware deployments용 canonical 형식)</p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">③</span></div>
+          <h3>Phase C — Neo4j 마이그레이션</h3>
+          <p>YAML SeedRegistry → Neo4jRegistry로 swap. 인터페이스 유지로 RiskGuard 코드 변경 0.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ARCHITECTURE ===== -->
+    <section id="architecture" class="section">
+      <div class="section-head">
+        <span class="section-tag">Tech Stack</span>
+        <h2><span class="text-am">단일 호스트</span> 운용 모델 · 7-Layer Architecture</h2>
+        <p class="section-lead">
+          단일 호스트(<code>ubuntu-02</code> 172.30.1.9 또는 <code>wdlab-Z790</code> 10.10.10.77)에서 모든 컴포넌트를 컨테이너로 운영.
+          AEGIS의 7-layer 패턴 차용. 모든 컨테이너는 비충돌 포트로 시프트되어 다른 프로젝트와 평행 운영.
+        </p>
+      </div>
+
+      <div class="arch">
+        <div class="arch-layer neu-raised">
+          <div class="arch-layer-title">UI · Glass Cockpit (Neumorphism)</div>
+          <div class="arch-blocks">
+            <div class="arch-block">9 Panels + 3 Modals</div>
+            <div class="arch-block">Mermaid DAG</div>
+            <div class="arch-block">i18n ko/en</div>
+            <div class="arch-block">Capabilities · Brian Q&amp;A · Onboarding Wizard</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-layer neu-raised arch-accent-cy">
+          <div class="arch-layer-title">FastAPI Backend · 69 Routes</div>
+          <div class="arch-blocks">
+            <div class="arch-block">LangGraph Supervisor (11 nodes)</div>
+            <div class="arch-block">RiskGuard Pipeline</div>
+            <div class="arch-block">Decision Token Service</div>
+            <div class="arch-block">Strategy Engine + GEPA</div>
+            <div class="arch-block">5-Stage Promotion Gate</div>
+            <div class="arch-block">EOD Reconcile</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-layer neu-raised">
+          <div class="arch-layer-title">OpenClaw In-Process Gateway · Routing Shell</div>
+          <div class="arch-blocks">
+            <div class="arch-block">tools.profile · allow/deny</div>
+            <div class="arch-block">providerPolicy</div>
+            <div class="arch-block">Multi-Channel Gateway 8ch</div>
+            <div class="arch-block">MCP Native (kis-broker)</div>
+            <div class="arch-block">Skills (SKILL.md)</div>
+            <div class="arch-block">Cron / Webhook</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-grid">
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-cy">PostgreSQL</div>
+            <div class="arch-cell-sub">audit_trail (hash-chained, no-update trigger) · LangGraph Checkpointing · ledger · system_state · ai_act_registrations</div>
+          </div>
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-pk">Redis</div>
+            <div class="arch-cell-sub">RiskGuard Heartbeat 30s TTL · Idempotency 24h · 실시간 가격 캐시 · Halt state</div>
+          </div>
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-cy">Kafka / Redpanda</div>
+            <div class="arch-cell-sub">market.tick 시간 정렬 큐 · alphaforge.audit.v1 fan-out → OpenSearch</div>
+          </div>
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-pk">NATS JetStream</div>
+            <div class="arch-cell-sub">signal.&lt;strategy&gt;.&lt;symbol&gt; · alphaforge.command.{halt,resume,promote,run}</div>
+          </div>
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-cy">Qdrant</div>
+            <div class="arch-cell-sub">News Embedding · RAG retrieval (동종 산업 5~10건)</div>
+          </div>
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-pk">OpenSearch</div>
+            <div class="arch-cell-sub">alphaforge-audit-YYYY.MM 인덱스 · Compliance 검색 · Wazuh 연동</div>
+          </div>
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-cy">Neo4j (선택)</div>
+            <div class="arch-cell-sub">KFinOnto 그래프 SoT · NEO4J_URI ENV 활성</div>
+          </div>
+          <div class="arch-cell neu-raised">
+            <div class="arch-cell-title text-pk">MinIO / Wazuh</div>
+            <div class="arch-cell-sub">백업 · FIM /etc/alphaforge · 17 룰 디코더 · Rules 100600/100601</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-layer neu-raised arch-accent-pk">
+          <div class="arch-layer-title">LLM Inference · Local Only · Hybrid Routing</div>
+          <div class="arch-blocks">
+            <div class="arch-block">vLLM (PagedAttention + prefix-caching)</div>
+            <div class="arch-block">Ollama (exaone3.5:7.8b · gemma3 · qwen3)</div>
+            <div class="arch-block">External LLM prefix block (gpt-, claude-, azure/)</div>
+            <div class="arch-block">Hybrid: 결정 노드 = Qwen3 30B / 보조 = 경량</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow">▼</div>
+
+        <div class="arch-layer neu-raised">
+          <div class="arch-layer-title">Broker Layer · Dual Failover</div>
+          <div class="arch-blocks">
+            <div class="arch-block">KIS Open API (Primary, Account: 위탁계좌 종합)</div>
+            <div class="arch-block">LS증권 (Secondary)</div>
+            <div class="arch-block">FailoverBroker (3회 재시도 후 자동 전환 · 5분 헬스체크)</div>
+            <div class="arch-block">SimulatedBroker (Backtest)</div>
+            <div class="arch-block">미래: IBKR 동일 인터페이스</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== KIS API ===== -->
+    <section id="kis" class="section">
+      <div class="section-head">
+        <span class="section-tag">Korea Investment Securities</span>
+        <h2><span class="text-am">KIS API</span> 연동과 환경 고정 5단계</h2>
+        <p class="section-lead">
+          AlphaForge는 KIS Open API를 Primary 브로커로 사용합니다. API 키 발급 전에 모의투자 계좌부터 신청하는 것이 핵심입니다.
+          모든 시크릿은 mode 0600으로 잠기고, systemd <code>ExecStartPre</code>가 환경 검증 + KIS 토큰 발급을 시도하여 실패 시
+          서비스 자체가 시작되지 않도록 fail-closed가 보장됩니다.
+        </p>
+      </div>
+
+      <div class="gates">
+        <div class="gate neu-raised">
+          <span class="gate-tag">Step A</span>
+          <h4>시크릿 파일 생성</h4>
+          <p><code>/etc/alphaforge/.env.{paper,live.LOCKED}</code> · mode 0600 · root만 read</p>
+          <div class="gate-meta">AIDE 변경 추적 + Wazuh FIM</div>
+        </div>
+        <div class="gate neu-raised">
+          <span class="gate-tag">Step B</span>
+          <h4>환경 검증</h4>
+          <p><code>scripts/validate_env.py</code> · KIS_APP_KEY/SECRET/ACCOUNT/ENV/HTS_ID 정규식 매처</p>
+          <div class="gate-meta">Live gate 자동 검사</div>
+        </div>
+        <div class="gate neu-raised">
+          <span class="gate-tag">Step C</span>
+          <h4>토큰 사전 검증</h4>
+          <p><code>scripts/probe_kis.py</code> · OAuth <code>/oauth2/tokenP</code> 사전 검증</p>
+          <div class="gate-meta">실패 시 부팅 차단</div>
+        </div>
+        <div class="gate neu-raised">
+          <span class="gate-tag">Step D</span>
+          <h4>systemd 서비스</h4>
+          <p><code>infra/systemd/alphaforge.service</code> · ExecStartPre로 검증 호출</p>
+          <div class="gate-meta">fail-closed boot</div>
+        </div>
+        <div class="gate neu-raised">
+          <span class="gate-tag">Step E</span>
+          <h4>환경 잠금</h4>
+          <p>AIDE 변경 추적 + Wazuh FIM + 30일마다 만료일 체크 (<code>check_kis_expiry.py</code>)</p>
+          <div class="gate-meta">D-30 / D-7 / D-1 CRITICAL alert</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 28px;">
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">⊟</span></div>
+          <h3>MCP Tool 카탈로그 — Read-Only</h3>
+          <p style="font-size:12.5px; font-family:'JetBrains Mono', monospace; line-height:1.85;">
+            broker.get_quote(symbol)<br/>
+            broker.get_orderbook(symbol, depth=10)<br/>
+            broker.get_balance(account)<br/>
+            broker.get_positions(account)<br/>
+            broker.get_order_history(account, start, end)<br/>
+            broker.get_executions(account, start, end)<br/>
+            broker.get_daily_bars(symbol, days=252)<br/>
+            broker.get_minute_bars(symbol, minutes=390)<br/>
+            broker.subscribe_ticks(symbols)
+          </p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-pk">⊞</span></div>
+          <h3>Write Tools — RiskGuard 승인 필수</h3>
+          <p style="font-size:12.5px; font-family:'JetBrains Mono', monospace; line-height:1.85;">
+            broker.place_order(...) → order_id, status<br/>
+            broker.cancel_order(account, order_id)<br/>
+            broker.modify_order(account, order_id, qty, price)
+          </p>
+          <p style="margin-top:14px; font-size:13px; color:var(--text-2); line-height:1.65;">
+            Decision Token + idempotency_key(<code>audit_id</code>) 필수.
+            Redis 24시간 캐시로 중복 주문 차단.
+            <code>FailoverBroker</code>는 재시도성 오류에서만 KIS → LS 페일오버하며,
+            잔고 부족 같은 논리적 거부에는 페일오버를 거부.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EMERGENCY OPS ===== -->
+    <section id="emergency" class="section">
+      <div class="section-head">
+        <span class="section-tag">Emergency &amp; Auto-Recovery</span>
+        <h2>비상 운용과 <span class="text-pk">자동 회복</span></h2>
+        <p class="section-lead">
+          본 시스템은 <b>정지 상태에서 손실이 더 커지지 않도록 설계</b>되어 있습니다.
+          기술이 통제 불능에 빠졌다고 느낄 때, 두 번 생각하지 말고 <code>/halt</code>를 누르세요.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-pk">■</span></div>
+          <h3>3가지 호출 경로</h3>
+          <p>
+            ① 대시보드의 빨간 [EMERGENCY HALT] 버튼<br/>
+            ② Telegram에서 <code>/halt</code> 입력 (자연어 <code>/run halt now because earnings out</code>도 가능)<br/>
+            ③ 자동 트리거 — 일일 손실 한도 도달 · heartbeat 끊김 · hash chain 무결성 깨짐 · 양 broker 모두 실패
+          </p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-pk">⊕</span></div>
+          <h3>비상 정지 시 8단계 동작</h3>
+          <p style="font-size:12.5px; line-height:1.7;">
+            ① halt 신호 → 모든 cycle<br/>
+            ② 진행 중 cycle은 현재 노드 완료 후 즉시 종료<br/>
+            ③ 미체결 주문 모두 자동 취소<br/>
+            ④ Live: 보유 포지션 시장가 청산 (자본 보호 우선)<br/>
+            ⑤ Paper: 포지션 보존 (학습 목적)<br/>
+            ⑥ system_state DB에 halted=true 기록<br/>
+            ⑦ Telegram "🚨 SYSTEM HALTED" 알림<br/>
+            ⑧ <code>/resume</code> 전까지 신규 cycle 0
+          </p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">↻</span></div>
+          <h3>AutoRecoveryPolicy</h3>
+          <p>
+            연속 오류 trip 시 자동 복구 시도.<br/>
+            ① 1분마다 <code>alphaforge-doctor kis</code> 진단<br/>
+            ② 5번 연속 GREEN 시 halt 해제 + 루프 재가동<br/>
+            ③ 5분 안에 5번 GREEN 못 뜨면 GAVE_UP → 사람 개입 대기<br/><br/>
+            <b>영구적 장애는 사람에게 escalate. 추측으로 복구하지 않습니다.</b>
+          </p>
+        </div>
+      </div>
+
+      <div class="quote-banner neu-raised" style="margin-top: 28px;">
+        <blockquote>
+          OpenTimestamps 앵커 — 매주 KST 월요일 00:00에 audit chain의 루트 SHA-256이
+          비트코인 블록체인에 게시됩니다. 이는 <b>"우리가 데이터를 나중에 고쳐 쓴 것 아니냐"</b>는
+          의심을 암호학적으로 차단합니다.
+        </blockquote>
+        <cite>— §14.5 감사 체인 무결성</cite>
+      </div>
+    </section>
+
+    <!-- ===== STATUS ===== -->
+    <section id="status" class="section">
+      <div class="section-head">
+        <span class="section-tag">Implementation Status</span>
+        <h2>2026-05-03 <span class="text-am">구현 현황</span> · 정직한 공개</h2>
+        <p class="section-lead">
+          AlphaForge는 총 67개 Phase, 110+ 세부 기능에 걸쳐 정밀하게 구축되었습니다.
+          시스템 아키텍트로서 현재의 구현 상태를 투명하게 공개하는 것은 운용자의 책임입니다.
+        </p>
+      </div>
+
+      <div class="status-grid">
+        <div class="status-pill neu-raised ok">
+          <div class="num">577</div>
+          <div class="lbl">Tests PASS</div>
+        </div>
+        <div class="status-pill neu-raised ok">
+          <div class="num">69</div>
+          <div class="lbl">FastAPI Routes</div>
+        </div>
+        <div class="status-pill neu-raised ok">
+          <div class="num">11/11</div>
+          <div class="lbl">Capability Matrix OK</div>
+        </div>
+        <div class="status-pill neu-raised note">
+          <div class="num">0</div>
+          <div class="lbl">FAIL · Honest Pruning</div>
+        </div>
+      </div>
+
+      <div class="status-grid" style="margin-top: 18px;">
+        <div class="status-pill neu-raised ok">
+          <div class="num">5</div>
+          <div class="lbl">Live Containers</div>
+        </div>
+        <div class="status-pill neu-raised ok">
+          <div class="num">239</div>
+          <div class="lbl">KRX Symbols Catalog</div>
+        </div>
+        <div class="status-pill neu-raised ok">
+          <div class="num">8</div>
+          <div class="lbl">Multi-Channel Alerts</div>
+        </div>
+        <div class="status-pill neu-raised warn">
+          <div class="num">Stage 4</div>
+          <div class="lbl">Awaiting KIS Live Cred</div>
+        </div>
+      </div>
+
+      <div class="gap-list neu-raised">
+        <h4>가장 큰 실제 갭 — 코드의 결함이 아니라 배포·통합의 미완수</h4>
+        <ul>
+          <li>KIS Live Credentials 입력 대기 (Stage 5 진입 차단 중)</li>
+          <li>OpenClaw 데몬 미설치 (in-process runtime으로 우회 운영 중)</li>
+          <li>KakaoTalk 채널 — Brian의 최종 채널 목표</li>
+          <li>ClawHub 외부 스킬 레지스트리 미연결</li>
+          <li>적대적 토론 (multi-agent debate) — 의도적 보류 (재현성 저하 위험)</li>
+          <li>Proxmox VM — 단일 호스트 모델에서는 정상 부재</li>
+        </ul>
+      </div>
+
+      <div class="gap-list neu-raised" style="margin-top: 18px;">
+        <h4>2026-05-03 부록 E·F 핵심 갱신 (단일 진실의 원천)</h4>
+        <ul>
+          <li>Run-AlphaForge.sh — venv·deps·Ed25519·front 4단계를 1줄로 통합 (자동 비충돌 포트 시프트)</li>
+          <li>OpenClaw in-process runtime — minimal/messaging/coding/full + per-agent override</li>
+          <li>Multi-Channel Gateway — 2채널(Telegram+APNs) → 8채널 fan-out, AlertRouter fail-soft</li>
+          <li>5-Stage Gate 자동 평가기 — 10 criterion 코드 평가, X-AlphaForge-Operator 헤더 검증</li>
+          <li>RiskGuard 적대성 테스트 격상 — Hypothesis max_examples 80→200 + BAD_PORTFOLIO_CAPITAL</li>
+          <li>KFinOnto 확장 — Phase A(클래스) · Phase B(SHACL) · Phase C(Neo4j) scaffold</li>
+          <li>Operator-level RBAC — 4 권한(read_only / submit / promote / admin)</li>
+          <li>PQC scaffold — Ed25519 default + Dilithium2 / Falcon-512 selector</li>
+          <li>EVM audit anchor — OpenTimestamps + AlphaForgeAnchor.sol 스마트 컨트랙트</li>
+          <li>KRX-Symbols 통합 — 239 종목(KOSPI 102 / KOSDAQ 73 / KONEX 10 / KSM 5 / ETF 29 / INDEX 20)</li>
+          <li>HedgeManager · KODEX 인버스(114800) alphaforge_role 메타데이터 부팅 검증</li>
+          <li>우선주(005935) ↔ 보통주(005930) wash-trade 매칭 (instrument equivalence)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== COMPARISON ===== -->
+    <section id="compare" class="section">
+      <div class="section-head">
+        <span class="section-tag">Paradigm Shift</span>
+        <h2>Black-box AI <span class="text-pk">vs</span> AlphaForge</h2>
+        <p class="section-lead">
+          상용 SaaS에서 자주 일어나는 시나리오 — "왜 손실이 났나요?" → "AI가 그렇게 판단했습니다" —
+          가 AlphaForge에서는 시스템적으로 발생할 수 없습니다.
+        </p>
+      </div>
+
+      <div class="compare neu-raised">
+        <div class="compare-row compare-head">
+          <div>차원</div>
+          <div>WDLAB-AlphaForge</div>
+          <div>Black-box AI Trading</div>
+        </div>
+        <div class="compare-row">
+          <div>의사결정 근거</div>
+          <div class="hi">reason_code + 측정 가능한 metric (예: VAR_EXCEEDED 3.2% / 한도 3.0%)</div>
+          <div class="lo">"AI가 그렇게 판단했습니다"</div>
+        </div>
+        <div class="compare-row">
+          <div>주문 권한</div>
+          <div class="hi">Ed25519 Decision Token 10초 TTL · payload_hash 위조 불가</div>
+          <div class="lo">단일 시스템이 분석·결정·주문 모두 수행</div>
+        </div>
+        <div class="compare-row">
+          <div>실행 가능 단계</div>
+          <div class="hi">5-Stage Gating · 자동 승급 절대 금지 · 4중 강제</div>
+          <div class="lo">Live부터 시작 또는 모호한 단계 구분</div>
+        </div>
+        <div class="compare-row">
+          <div>전략의 출처</div>
+          <div class="hi">Brian의 SKILL.md (1차) + 학술 문헌 (2차) + AI는 후보만 제안</div>
+          <div class="lo">AI가 "최고 전략" 자동 선별</div>
+        </div>
+        <div class="compare-row">
+          <div>감사 추적</div>
+          <div class="hi">Hash-chained audit_trail + 매주 OpenTimestamps 비트코인 앵커링</div>
+          <div class="lo">로그 보관만 (사후 변조 가능)</div>
+        </div>
+        <div class="compare-row">
+          <div>환각 차단</div>
+          <div class="hi">KFinOnto 6 SHACL 룰 · Pre-LLM peer set 주입 · RULE-6 tier-4 alone never fires</div>
+          <div class="lo">LLM 신뢰에만 의존</div>
+        </div>
+        <div class="compare-row">
+          <div>Backtest = Live 보장</div>
+          <div class="hi">Determinism Layer LLM 캐시(<code>sha256(prompt+input+model+seed+temp)</code>)</div>
+          <div class="lo">백테스트와 실거래의 의사결정 경로 분리</div>
+        </div>
+        <div class="compare-row">
+          <div>비상 회복</div>
+          <div class="hi">AutoRecoveryPolicy + Heartbeat fail-closed + Kill Switch 3경로</div>
+          <div class="lo">관리자 수동 대응만</div>
+        </div>
+        <div class="compare-row">
+          <div>외부 LLM 호출</div>
+          <div class="hi">prefix block (gpt- / claude- / azure/) — 데이터 외부 유출 0</div>
+          <div class="lo">SaaS API에 의존</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 32px;">
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-pk">✕</span></div>
+          <h3>AlphaForge가 발견하지 *않는* 것</h3>
+          <p style="font-size:13px; line-height:1.85;">
+            ❌ 새로운 매매 전략을 자동 발견하지 않음<br/>
+            ❌ 최적의 매매 룰을 자동 생성하지 않음<br/>
+            ❌ 가격 패턴을 학습해 미래를 예측하지 않음<br/>
+            ❌ AI가 "최고 전략"을 자동 선별하지 않음
+          </p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">✓</span></div>
+          <h3>AlphaForge가 *하는* 일</h3>
+          <p style="font-size:13px; line-height:1.85;">
+            ✅ 사람이 설계한 전략의 24/7 무결성 실행<br/>
+            ✅ 자본 손실 사고의 시스템적 차단<br/>
+            ✅ 컴플라이언스 및 감사 자동화<br/>
+            ✅ 점진적 개선의 안전한 자동화 (GEPA 0~2세대)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3 RULES ===== -->
+    <section id="rules" class="section">
+      <div class="section-head">
+        <span class="section-tag">Operating Doctrine</span>
+        <h2>운용 <span class="text-cy">3대 핵심 수칙</span></h2>
+        <p class="section-lead">
+          이 3대 수칙은 단순한 가이드라인이 아니라, AlphaForge 110+ 기능 전체가 향하는 목적지입니다.
+        </p>
+      </div>
+
+      <div class="rules">
+        <div class="rule neu-raised">
+          <div class="rule-num">01</div>
+          <h3>안전 우선</h3>
+          <p>
+            어떤 분석가 노드의 신호가 아무리 강해도, RiskGuard가 한도 위반을 감지하면 무조건 거부됩니다.
+            이 우선순위를 뒤집으려는 모든 시도(예: "이번 한 번만 한도 초과 허용")는 시스템의 안전 모델을 무너뜨립니다.
+          </p>
+        </div>
+        <div class="rule neu-raised">
+          <div class="rule-num">02</div>
+          <h3>단계 엄수</h3>
+          <p>
+            Backtest 4주 + Paper 4주 + Shadow 2주 + Limited Live 4주 = 총 14주.
+            이는 기술적 검증 시간이 아니라 <b>운용자의 직관 형성 시간</b>이기도 합니다.
+            이 시간 동안 운용자는 시스템 패턴, 평소 latency, 거부 사유 분포를 체화합니다.
+          </p>
+        </div>
+        <div class="rule neu-raised">
+          <div class="rule-num">03</div>
+          <h3>인간 개입</h3>
+          <p>
+            기술이 통제 불능에 빠졌다고 느낄 때, 두 번 생각하지 말고 <code>/halt</code>를 누르세요.
+            시스템은 <b>정지 상태에서 손실이 더 커지지 않도록</b> 설계되어 있습니다.
+            정지 후 천천히 원인을 점검하면 됩니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FUTURE ===== -->
+    <section id="future" class="section">
+      <div class="section-head">
+        <span class="section-tag">Roadmap · Vision</span>
+        <h2>AlphaForge의 <span class="text-pk">최종 목표</span></h2>
+        <p class="section-lead">
+          단기는 운용 안정성, 중기는 단계적 자본 확장, 장기는 투자자문 플랫폼으로의 전환.
+          <b>궁극적으로는 AI 자동매매의 표준 안전 모델로 자리잡는 것</b>이 목표입니다.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item neu-raised pulse-card">
+          <div class="tl-tag tl-current">NOW · 2026.05</div>
+          <h4>Stage 4 진입 임박</h4>
+          <p>KIS Live Credentials 통합 → 42일 staging soak test (Phase 55) → Stage 4 첫 승급 (Phase 56)</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">Q1~Q2</div>
+          <h4>신뢰성 + UX</h4>
+          <p>Honest Pruning Pass · Onboarding Wizard · 음성 명령 (Whisper) · Multi-modal Daily Report (TTS)</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">Q3~Q4</div>
+          <h4>성능 + 확장성</h4>
+          <p>Bayesian Optimization for GEPA · Transformer-based Forecasting · Multi-Account Federation 강화 · PQC 점진 마이그레이션</p>
+        </div>
+        <div class="tl-item neu-raised">
+          <div class="tl-tag">2~3년</div>
+          <h4>자문 플랫폼 전환</h4>
+          <p>다중 운용자 → 자문가-운용자 분리 → Federated Strategy Network → 기관 수준 자문 서비스 (라이선스)</p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top: 36px;">
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">▲</span></div>
+          <h3>5대 표준화 영역</h3>
+          <p style="font-size:13px; line-height:1.75;">
+            ① <b>AHE</b> — LLM 자유도 제한 5개 메타 레이어<br/>
+            ② <b>Decision Token Protocol</b> — Ed25519 + 10초 TTL<br/>
+            ③ <b>5-Stage Gating Standard</b> — Backtest→Live 진입 표준<br/>
+            ④ <b>Hash-Chained Audit + OpenTimestamps</b><br/>
+            ⑤ <b>KFinOnto</b> — 한국 금융 도메인 온톨로지 오픈 표준
+          </p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-pk">★</span></div>
+          <h3>사회적 책임</h3>
+          <p style="font-size:13px; line-height:1.75;">
+            • 개인 투자자 보호 — AI 환각 자본 손실 사고 시스템적 차단<br/>
+            • 시장 무결성 — 시세조종·자전거래·미공개정보 사전 차단<br/>
+            • 세무 투명성 — 모든 거래 기록과 자동 신고 자료<br/>
+            • 법적 책임 추적성 — 분쟁 발생 시 완벽한 증거 체인
+          </p>
+        </div>
+        <div class="card neu-raised">
+          <div class="card-icon neu-pressed"><span class="ico-cy">⊘</span></div>
+          <h3>의도적으로 *하지 않을* 일</h3>
+          <p style="font-size:13px; line-height:1.75;">
+            ❌ Strategy Marketplace 모더레이션 surface<br/>
+            ❌ SSE 실시간 대시보드 스트리밍 (30분 인트라데이로 충분)<br/>
+            ❌ Multi-modal Generation (트레이딩 도메인 외)<br/>
+            ❌ Voice + Smart Home 통합 (AEGIS Seruphine 영역)
+          </p>
+        </div>
+      </div>
+
+      <div class="quote-banner neu-raised" style="margin-top: 36px;">
+        <blockquote>
+          정교한 에이전트 오케스트레이션, AHE 기반의 마구, 위조 불가능한 결정 토큰은
+          <b>AI 자동매매가 가야 할 표준적인 안전 모델</b>을 제시합니다.<br/><br/>
+          AlphaForge와 함께하는 투자는 단순한 자동화가 아니라,
+          <b>철저하게 계산된 공학적 안전 위에서 춤추는 지적인 여정</b>입니다.
+        </blockquote>
+        <cite>— Brian Lee · 2026-05-02 · WDLAB Internal</cite>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer neu-pressed">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="brand-logo neu-raised small">
+            <span class="led led-cy"></span>
+            <span class="led led-pk"></span>
+          </div>
+          <div>
+            <div class="brand-title">WDLAB-AlphaForge</div>
+            <div class="brand-subtitle">Single-Host · Self-Hosted · Fail-Closed · 화이트박스</div>
+          </div>
+        </div>
+        <div class="footer-meta">
+          <div>v2.0 Integrated Edition · 2026.05.03</div>
+          <div>© WDLAB / Brian Lee · A3 Security Co., Ltd.</div>
+          <div>AITF Working Group · AI·ML·AX Research Division</div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <button id="toTop" class="to-top neu-raised" aria-label="Top">▲</button>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
