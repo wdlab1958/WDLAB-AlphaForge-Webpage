@@ -44,7 +44,7 @@
       <div class="nav-group">
         <div class="nav-label">에이전트 · Architecture</div>
         <a class="nav-item" href="#agents" data-target="agents"><i class="dot dot-cy"></i><span>11명의 에이전트</span></a>
-        <a class="nav-item" href="#strategies" data-target="strategies"><i class="dot dot-cy"></i><span>활용 전략 4종</span></a>
+        <a class="nav-item" href="#strategies" data-target="strategies"><i class="dot dot-cy"></i><span>활용 전략 5종</span></a>
         <a class="nav-item" href="#ontology" data-target="ontology"><i class="dot dot-cy"></i><span>KFinOnto 온톨로지</span></a>
       </div>
 
@@ -82,9 +82,9 @@
     <!-- ===== HERO ===== -->
     <section id="hero" class="section section-hero">
       <div class="hero-meta">
-        <span class="chip neu-pressed">v2.0 Integrated Edition · 2026.05.03</span>
-        <span class="chip neu-pressed">67 Phases · 110+ Functions</span>
-        <span class="chip neu-pressed">577 PASS / 0 FAIL</span>
+        <span class="chip neu-pressed">v2.0 Integrated Edition · 2026.05</span>
+        <span class="chip neu-pressed">67 Phases · 11 Supervisor Nodes · 76 Endpoints</span>
+        <span class="chip neu-pressed">1008 tests · 0 FAIL</span>
       </div>
 
       <h1 class="hero-title">
@@ -130,7 +130,7 @@
           <div class="stat-label">FastAPI Routes</div>
         </div>
         <div class="stat-card neu-raised">
-          <div class="stat-number text-pk">239</div>
+          <div class="stat-number text-pk">246</div>
           <div class="stat-label">KRX Symbols</div>
         </div>
       </div>
@@ -421,7 +421,7 @@
         <div class="agent neu-raised">
           <div class="agent-head"><h4>⚖ ComplianceAgent</h4><span class="agent-badge">Audit</span></div>
           <p>자본시장법·거래소 룰·시세조종 패턴 자가검증. Wash-trade·Self-cross·Layering 탐지. 연말 세무 자료 자동 생성.</p>
-          <div class="agent-tools">거래세 0.15% + 농특세 · 대주주 양도세 · FIFO 로트 · 14컬럼 CSV</div>
+          <div class="agent-tools">2025 세율 KOSPI 0.15% / KOSDAQ 0.15% (sell-side 합산) · 대주주 양도세 · FIFO 로트 · 14컬럼 CSV</div>
         </div>
 
         <div class="agent neu-raised">
@@ -436,15 +436,22 @@
     <section id="riskguard" class="section">
       <div class="section-head">
         <span class="section-tag">Pre-Trade Validation</span>
-        <h2>RiskGuard <span class="text-pk">6단계 검증 파이프라인</span></h2>
+        <h2>RiskGuard <span class="text-pk">Stage 0 → 6단계 검증 파이프라인</span></h2>
         <p class="section-lead">
-          모든 매매 주문은 다음 6단계 관문을 순차적으로 통과해야 합니다.
+          모든 매매 주문은 <b>Stage 0 (KFinOnto ontology pre-check, Phase 67)</b> 이후
+          다음 6단계 관문을 순차적으로 통과해야 합니다 — 실효적 7단 평가.
           한 단계라도 실패하면 즉시 DENY되며, Fail-Closed 모드로 진입합니다.
           평가 시간 &lt; 10ms를 유지하여 실시간 거래에 영향을 주지 않습니다.
         </p>
       </div>
 
       <div class="stages">
+        <div class="stage-step neu-raised">
+          <div class="stage-num">0</div>
+          <h4>KFinOnto Ontology Pre-Check (Phase 67)</h4>
+          <p>RULE-1~6 (unknown symbol · halted/delisted · invalid side · market-cap floor · index membership · tier-4 alone never fires) — 의미 수준 거부.</p>
+          <div class="stage-deny">ONTOLOGY_UNKNOWN · REGULATORY_STATUS · TIER_4_ALONE</div>
+        </div>
         <div class="stage-step neu-raised">
           <div class="stage-num">1</div>
           <h4>Schema Validation</h4>
@@ -617,19 +624,28 @@
           <div class="card-icon neu-pressed"><span class="ico-pk">⌖</span></div>
           <h3>Stage 2 → Stage 3 승급 10개 기준</h3>
           <p style="font-size:13px; line-height:1.7;">
-            슬리피지 ≤ 백테스트 추정의 30% · Sharpe ≥ 0.7 · Schema/Token/Hash chain 위반 0 ·
-            일일 손실 한도(2%) 위반 0 · 동시 보유 ≤ 5 · Heartbeat 끊김 ≤ 1회 · Telegram 지연 ≤ 5s ·
-            페일오버 정상 동작 검증 완료
+            <b>C01</b> 슬리피지 ≤ 백테스트 추정의 30% ·
+            <b>C02</b> Sharpe ≥ 1.0 ·
+            <b>C03</b> Schema 위반 = 0 ·
+            <b>C04</b> Decision Token 위반 = 0 ·
+            <b>C05</b> Audit hash chain 무결성 깨짐 = 0 ·
+            <b>C06</b> 일일 손실 한도(2%) 위반 = 0 ·
+            <b>C07</b> 동시 보유 ≤ 5 ·
+            <b>C08</b> Heartbeat 끊김 ≤ 1회 ·
+            <b>C09</b> Telegram 지연 5초 초과 = 0 ·
+            <b>C10</b> 페일오버 정상 동작 검증 완료 ·
+            (Stage 1→2 추가: MDD &lt; 15% · Stage 3→4 추가: P&amp;L drift ≤ 5%) —
+            SoT: <code>src/alphaforge/runtime/promotion_gate.py</code>
           </p>
         </div>
       </div>
     </section>
 
-    <!-- ===== STRATEGIES 4 ===== -->
+    <!-- ===== STRATEGIES 5 ===== -->
     <section id="strategies" class="section">
       <div class="section-head">
         <span class="section-tag">Trading Strategies</span>
-        <h2>SKILL.md 형식으로 표준화된 <span class="text-cy">활용 전략 4종</span></h2>
+        <h2>SKILL.md 형식으로 표준화된 <span class="text-cy">활용 전략 5종</span></h2>
         <p class="section-lead">
           AlphaForge에서 모든 전략은 <code>SKILL.md</code> 한 파일로 표현됩니다 (YAML frontmatter + 마크다운 본문).
           전략은 <b>AI가 발견하지 않습니다</b>. Brian의 45년 경험과 검증된 퀀트 문헌(Andreas Clenow, Ernie Chan)에서
@@ -701,7 +717,7 @@
         <div class="strategy neu-raised">
           <div class="strategy-head">
             <h4>DSL Trend</h4>
-            <span class="strategy-sharpe">Phase 54</span>
+            <span class="strategy-sharpe">Sharpe 0.8</span>
           </div>
           <div class="strategy-philo">SKILL.md 본문의 <code>dsl:</code> 블록을 백엔드 부팅 시 자동 컴파일하는 안전한 전략 표현 언어</div>
           <div class="strategy-cond">
@@ -715,6 +731,25 @@
           </div>
           <div class="strategy-foot">
             <span>DSL</span><span>SKILL.md</span><span>safe-eval</span><span>property-based</span>
+          </div>
+        </div>
+
+        <div class="strategy neu-raised">
+          <div class="strategy-head">
+            <h4>Momentum Ranking</h4>
+            <span class="strategy-sharpe">Sharpe 1.0</span>
+          </div>
+          <div class="strategy-philo">"universe 내 상위 모멘텀 종목을 추려 신호 빈도를 보장한다" — breakout 임계 미달 cycle에서도 신호를 발사하는 ranking-기반 전략 (2026-05-21 도둑 #50 추가)</div>
+          <div class="strategy-cond">
+            <ul>
+              <li>universe 전체에 대해 20일 모멘텀 percentile 산출</li>
+              <li>상위 ranking 종목 우선 신호화</li>
+              <li>breakout 미발생 cycle에서도 0-신호 cycle 방지</li>
+              <li>RiskGuard 22-게이트가 받은 모든 proposal을 정상 검증</li>
+            </ul>
+          </div>
+          <div class="strategy-foot">
+            <span>BUY</span><span>ranking</span><span>universe-aware</span><span>enabled</span>
           </div>
         </div>
       </div>
@@ -808,7 +843,7 @@
         <div class="arch-arrow">▼</div>
 
         <div class="arch-layer neu-raised arch-accent-cy">
-          <div class="arch-layer-title">FastAPI Backend · 69 Routes</div>
+          <div class="arch-layer-title">FastAPI Backend · 76 Routes</div>
           <div class="arch-blocks">
             <div class="arch-block">LangGraph Supervisor (11 nodes)</div>
             <div class="arch-block">RiskGuard Pipeline</div>
@@ -1038,25 +1073,27 @@
     <section id="status" class="section">
       <div class="section-head">
         <span class="section-tag">Implementation Status</span>
-        <h2>2026-05-03 <span class="text-am">구현 현황</span> · 정직한 공개</h2>
+        <h2>2026-05 <span class="text-am">구현 현황</span> · 정직한 공개</h2>
         <p class="section-lead">
-          AlphaForge는 총 67개 Phase, 110+ 세부 기능에 걸쳐 정밀하게 구축되었습니다.
+          AlphaForge는 총 67개 Phase에 걸쳐 정밀하게 구축되었습니다 —
+          11 supervisor 노드, 76 FastAPI 엔드포인트, 12 MCP broker 도구, 8 알림 채널, 5 SKILL.md 전략.
           시스템 아키텍트로서 현재의 구현 상태를 투명하게 공개하는 것은 운용자의 책임입니다.
+          수치는 <code>scripts/update_webpage_stats.py</code>가 코드에서 직접 추출합니다.
         </p>
       </div>
 
       <div class="status-grid">
         <div class="status-pill neu-raised ok">
-          <div class="num">577</div>
-          <div class="lbl">Tests PASS</div>
+          <div class="num">1008</div>
+          <div class="lbl">Tests collected · 0 FAIL</div>
         </div>
         <div class="status-pill neu-raised ok">
-          <div class="num">69</div>
+          <div class="num">76</div>
           <div class="lbl">FastAPI Routes</div>
         </div>
         <div class="status-pill neu-raised ok">
-          <div class="num">11/11</div>
-          <div class="lbl">Capability Matrix OK</div>
+          <div class="num">11 / 12</div>
+          <div class="lbl">Capabilities OK (1 blueprint: Proxmox)</div>
         </div>
         <div class="status-pill neu-raised note">
           <div class="num">0</div>
@@ -1070,7 +1107,7 @@
           <div class="lbl">Live Containers</div>
         </div>
         <div class="status-pill neu-raised ok">
-          <div class="num">239</div>
+          <div class="num">246</div>
           <div class="lbl">KRX Symbols Catalog</div>
         </div>
         <div class="status-pill neu-raised ok">
@@ -1107,7 +1144,7 @@
           <li>Operator-level RBAC — 4 권한(read_only / submit / promote / admin)</li>
           <li>PQC scaffold — Ed25519 default + Dilithium2 / Falcon-512 selector</li>
           <li>EVM audit anchor — OpenTimestamps + AlphaForgeAnchor.sol 스마트 컨트랙트</li>
-          <li>KRX-Symbols 통합 — 239 종목(KOSPI 102 / KOSDAQ 73 / KONEX 10 / KSM 5 / ETF 29 / INDEX 20)</li>
+          <li>KRX-Symbols 통합 — 246 종목(KOSPI 102 / KOSDAQ 79 / KONEX 10 / KSM 5 / ETF 30 / INDEX 20)</li>
           <li>HedgeManager · KODEX 인버스(114800) alphaforge_role 메타데이터 부팅 검증</li>
           <li>우선주(005935) ↔ 보통주(005930) wash-trade 매칭 (instrument equivalence)</li>
         </ul>
@@ -1208,7 +1245,7 @@
         <span class="section-tag">Operating Doctrine</span>
         <h2>운용 <span class="text-cy">3대 핵심 수칙</span></h2>
         <p class="section-lead">
-          이 3대 수칙은 단순한 가이드라인이 아니라, AlphaForge 110+ 기능 전체가 향하는 목적지입니다.
+          이 3대 수칙은 단순한 가이드라인이 아니라, AlphaForge 67 Phase의 모든 결정이 향하는 목적지입니다.
         </p>
       </div>
 
