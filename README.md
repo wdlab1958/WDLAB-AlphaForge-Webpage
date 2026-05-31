@@ -158,7 +158,7 @@ GitHub Pages는 정적 파일만 호스팅하므로 빌드 단계 없음.
 
 - 17개 장 (Part I~VI) + 부록 A~F
 - 1152 paragraphs · 73KB
-- 작성: Brian Lee · A3 Security Co., Ltd. · AITF Working Group
+- 작성: Brian Lee · WDLAB@2023-2026 Co., Ltd. · WDLAB@2023-2026 Working Group
 - 발행: 2026-05-02 (rev1.0 / 부록 E·F는 2026-05-03 갱신)
 
 부록 E (2026-05-03 구현 업데이트) 및 부록 F (KRX-Symbols 카탈로그)의 수치가 본문 §13.8과 충돌할 경우 부록이 우선합니다 (부록 E.1 명시). 본 페이지는 그 우선 순위를 따라 39 → 69 routes, 5-channel → 8-channel gateway 등 최신 수치를 반영했습니다.
@@ -167,7 +167,7 @@ GitHub Pages는 정적 파일만 호스팅하므로 빌드 단계 없음.
 
 ## 7. 라이선스 / 저작권
 
-© WDLAB · Brian Lee · A3 Security Co., Ltd.
+© WDLAB · Brian Lee · WDLAB@2023-2026 Co., Ltd.
 WDLAB Internal · Confidential. 본 사이트는 AlphaForge 프로젝트의 소개 목적으로 작성되었습니다.
 
 ---
